@@ -4,6 +4,20 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    payment_gateways:
+        aci:
+            url: 'https://eu-test.oppwa.com/v1/payments'
+            request_headers:
+                content_type: "application/x-www-form-urlencoded"
+                authorization: "Bearer OGFjN2E0Yzc5Mzk0YmRjODAxOTM5NzM2ZjFhNzA2NDF8bzRVaTNXQGdRIyVCUjpnZjhQSEY="
+            payload:
+#                TODO Move to env file
+                entity_id: '8ac7a4c79394bdc801939736f17e063d'
+        shift4:
+            url: 'https://api.shift4.com/charges'
+            payload:
+                auth_key: 'test_shift4_auth_key'
+                card_number: '123456789000000'
 
 services:
     # default configuration for services in *this* file
@@ -22,3 +36,10 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\PaymentGateway\Aci\Aci:
+        arguments:
+            $paymentGateways: '%payment_gateways%'
+    App\PaymentGateway\Shift4\Shift4:
+        arguments:
+            $paymentGateways: '%payment_gateways%'
