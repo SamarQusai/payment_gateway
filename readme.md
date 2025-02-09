@@ -22,9 +22,11 @@
     - Install Symfony.
     - Run `composer install`
     - Run `symfony server:start`
+    - To run tests `php bin/phpunit`
 - **Using docker**
   - Run `docker compose build`
   - Run ` docker compose up`
+  - To run tests `php bin/phpunit`
 
 ## Charge payment
 - **Command**

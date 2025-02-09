@@ -27,7 +27,7 @@ class Shift4 implements PaymentGatewayInterface
         private HttpClientInterface $httpClient,
         private array $paymentGateways,
     ) {
-//        $this->requestHeadersConfiguration = $this->paymentGateways[self::NAME]['request_headers'];
+        $this->requestHeadersConfiguration = $this->paymentGateways[self::NAME]['request_headers'];
         $this->requestPayloadConfiguration = $this->paymentGateways[self::NAME]['payload'];
     }
 
@@ -35,6 +35,7 @@ class Shift4 implements PaymentGatewayInterface
     public function buildPayload(PaymentChargerRequest $request): array
     {
         return [
+            'auth_key' => $this->requestPayloadConfiguration['auth_key'],
             'amount' => $request->amount,
             'currency' => $request->currency,
             'card' => [
@@ -75,8 +76,8 @@ class Shift4 implements PaymentGatewayInterface
     {
         return [
             'auth_basic' => [
-                'username' => "pr_test_tXHm9qV9qV9bjIRHcQr9PLPa",
-                'password' => '',
+                'username' => $this->requestHeadersConfiguration['user_name'],
+                'password' => $this->requestHeadersConfiguration['password'],
             ]
         ];
     }

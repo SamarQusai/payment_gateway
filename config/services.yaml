@@ -17,7 +17,10 @@ parameters:
             url: 'https://api.shift4.com/charges'
             payload:
                 auth_key: 'test_shift4_auth_key'
-                card_number: '123456789000000'
+            request_headers:
+                #                TODO Move to env file
+                user_name: "pr_test_tXHm9qV9qV9bjIRHcQr9PLPa"
+                password: "pr_test_tXHm9qV9qV9bjIRHcQr9PLPa"
 
 services:
     # default configuration for services in *this* file
