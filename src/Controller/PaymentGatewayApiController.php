@@ -21,7 +21,7 @@ class PaymentGatewayApiController extends AbstractController
         $this->paymentService = $paymentService;
     }
 
-    #[Route('/payment/gateway/api/{gateway}', name: 'app_payment_gateway_api', methods: 'POST')]
+    #[Route('/app/example/{gateway}', name: 'app_payment_gateway_api', methods: 'POST')]
     public function index(PaymentChargerRequest $request, string $gateway): JsonResponse
     {
         $errors = $request->validate();

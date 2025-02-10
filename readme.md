@@ -35,7 +35,7 @@
     ```
 - **cURL**
   ```bash
-  curl --location --request POST 'localhost:8000/payment/gateway/api/aci' \
+  curl --location --request POST 'localhost:8000/app/example/aci' \
   --header 'Content-Type: application/json' \
   --data-raw '{
   "amount": 92.00,
